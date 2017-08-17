@@ -1,5 +1,7 @@
-WEATHER_API_KEY = "11b5e2d1d0c46698d3c43116c008a0c5"
-GOOGLE_API_KEY = "AIzaSyCWVJE74p5vkz6WE-TF6ZitiUpCI-zWqNQ"
+import os
+
+WEATHER_API_KEY = os.environ['WEATHER_API_KEY']
+GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
 MAPS_SEARCH_URL = "https://maps.googleapis.com/maps/api/place/radarsearch/json"
 PLACE_DETAILS_URL = "https://maps.googleapis.com/maps/api/place/details/json"
 TRAVEL_TIME_URL = "https://maps.googleapis.com/maps/api/distancematrix/json"
