@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Plan Your Itinerary</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="Marissa Mocenigo">
+
+	<link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<style>
+	body {
+		padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+	}
+	</style>
+	<link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="alert alert-info" role="alert">
+	<strong>Welcome!</strong>
+	{% if user_info %}
+	You are located in {{ user_info['location'] }}. It's currently {{ user_info['current_time'] }} and the current weather prediction calls for {{ user_info['weather_desc'] }}.
+	{% else %}
+	Unfortunately, we were unable to identify your location!
+	{% endif %}
+</div> <!-- well -->
+
+	<div>
+		<h3>How much time do you have today?</h3>
+		<form action="{{ url_for('request_itinerary') }}" method='POST'>
+			<div class="form-group">
+				<label for="hours">Enter a number of hours:</label>
+				<input type="text" id="hours" name="hours" placeholder="Hours" required>
+					</div> <!-- form-group -->
+			<div class="form-group">
+						<button type="submit" class="btn">See Suggestions</button>
+					</div> <!-- form-group -->
+
+</div> <!-- container -->
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Plan Your Itinerary</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="Marissa Mocenigo">
+
+	<link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<style>
+	body {
+		padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+	}
+	</style>
+	<link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+{{ map.js }}
+</head>
+<body>
+
+<div class="container">
+
+    <h2>You have <strong>{{ hours }} hours</strong> to plan. Here are some suggestions...</h2>
+
+
+	{% if map %}
+	<div class="container-fluid">
+	{{ map.html }}
+	</div>
+	{% endif %}
+
+	{% if activities %}
+	{% for activity in activities %}
+	<div class="well well-sm">
+	<div class="card">
+  	<div class="card-body">
+    	<h4 class="card-title">{{ activity["name"] }} - {{ activity["type"] }}</h4>
+    	<p class="card-text">{{ activity["address"] }}</p>
+    	<a href="{{ activity["link"] }}" target="_blank" class="btn btn-primary">Visit Website</a>
+  	</div>
+	</div>
+	</div>
+	{% endfor %}
+	{% else %}
+	<div class="alert alert-danger" role="alert">
+	We could not find any activities that match your needs!
+	</div>
+	{% endif %}
+
+</div> <!-- container -->
+
+</body>
+</html>
